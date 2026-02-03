@@ -10,21 +10,21 @@
 class Solution {
   public:
     int getKthFromLast(Node* head, int k) {
-        Node* fast = head;
-
-        for (int i = 0; i < k; i++) {
-            if (fast == NULL) return -1; // k > length
-            fast = fast->next;
+        // code here
+        Node* slow=head;
+        Node* fast=head;
+        for(int i=0;i<k;i++){
+            if(fast==NULL){
+                return -1;
+            }
+            fast=fast->next;//now fast k jinta aage ha slow sa;
         }
-
-        if (fast == NULL) return head->data; // k == length
-
-        Node* slow = head;
-        while (fast != NULL) {
-            slow = slow->next;
-            fast = fast->next;
+        
+        while(fast!=NULL){
+            slow=slow->next;
+            fast=fast->next;
         }
-
+        
         return slow->data;
     }
 };
